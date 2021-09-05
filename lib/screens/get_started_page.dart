@@ -1,84 +1,108 @@
-import 'package:diary_backend/screens/login_page.dart';
-import 'package:diary_backend/screens/main_page.dart';
+import 'package:diary_backend/screens/email_login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class GettingStartedPage extends StatelessWidget {
-  const GettingStartedPage({Key? key}) : super(key: key);
+class GettingStarted extends StatelessWidget {
+  const GettingStarted({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.lightGreenAccent,
-      child: Column(
-        children: [
-          Spacer(),
-          Text(
-            'My Life Diary',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            '"Document your life"',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              color: Colors.black26,
+      child: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Spacer(),
+            FlutterLogo(
+              size: 120,
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            child: TextButton.icon(
-              style: TextButton.styleFrom(
-                textStyle: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
+            Spacer(),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                width: 200,
+                child: Text(
+                  'Welcome To My Diary Book',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-              icon: Icon(Icons.login_rounded),
-              label: Text('Email Sign In to Get Started'),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                width: 230,
+                child: Text(
+                  '"Document your life"',
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Spacer(),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                onPrimary: Colors.white,
+                minimumSize: Size(double.infinity, 40),
+              ),
+              icon: Icon(Icons.mail_outline),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => EmailLoginPage(),
+                  ),
+                );
               },
+              label: Text('Sign In with Email'),
             ),
-          ),
-          ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-              onPrimary: Colors.black,
-              fixedSize: Size(double.infinity, 40),
+            SizedBox(
+              height: 10,
             ),
-            icon: FaIcon(
-              FontAwesomeIcons.google,
-              color: Colors.red,
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black45,
+                onPrimary: Colors.white,
+                minimumSize: Size(double.infinity, 40),
+              ),
+              icon: FaIcon(
+                FontAwesomeIcons.google,
+                color: Colors.red,
+              ),
+              onPressed: () {},
+              label: Text('Sign In with Google'),
             ),
-            onPressed: () {},
-            label: Text('Sign Up with Google'),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Container(
-            child: TextButton.icon(
-              style: TextButton.styleFrom(
-                textStyle: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.redAccent,
+                onPrimary: Colors.white,
+                minimumSize: Size(double.infinity, 40),
               ),
               icon: Icon(Icons.login_rounded),
-              label: Text('Later'),
               onPressed: () {},
+              label: Text(' Sign In Later'),
             ),
-          ),
-          Spacer(),
-        ],
+            Spacer(),
+            SizedBox(
+              height: 40,
+            ),
+          ],
+        ),
       ),
     );
   }
